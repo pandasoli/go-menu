@@ -127,7 +127,7 @@ func OpenList(settings Settings, raw_items ...string) (selected int, err error) 
     key, err := goterm.Getch()
     if err != nil { return -1, err }
 
-    if key == "q" { break }
+    if key == "\n" { break }
 
     switch key {
       case "\033[A" /* Up arrow */:
