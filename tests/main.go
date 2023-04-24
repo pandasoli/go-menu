@@ -20,8 +20,8 @@ func main() {
     "item3",
     "item4",
     "5Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-    "item6",
-    "item7",
+    "Produto",
+    "Serviço",
     "item8",
     "9Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
   }
@@ -34,7 +34,7 @@ func main() {
       },
       ItemCl: "2",
       HoverItemCl: "1;37",
-      Align: "",
+      Align: "center",
 
       LeftItemPadding: 1,
       RightItemPadding: 1,

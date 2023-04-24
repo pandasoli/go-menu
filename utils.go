@@ -24,7 +24,7 @@ func fitstr(str string, w int) (res []string, size int) {
 }
 
 func centerstr(str string, w int) string {
-  usable_space := w - len(str)
+  usable_space := w - len([]rune(str))
 
   padding_left := strings.Repeat(" ", usable_space / 2)
   padding_right := strings.Repeat(" ", (usable_space + 1) / 2)
