@@ -19,6 +19,9 @@ type Settings struct {
   HoverItemCl,
 
   Align string
+
+  LeftItemPadding, RightItemPadding,
+  TopItemPadding, BottomItemPadding int
 }
 
 type Item struct {

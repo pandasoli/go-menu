@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	. "github.com/pandasoli/go-scroll"
 	"github.com/pandasoli/goterm"
-  . "github.com/pandasoli/go-scroll"
 )
 
 
@@ -19,8 +19,34 @@ func OpenList(settings Settings, raw_items ...string) (selected int, err error) 
   make_items := func() {
     for _, raw_item := range raw_items {
       // break them into pieces the size of the horizontal space
-      val, h := fitstr(raw_item, settings.W)
+      lines, h := fitstr(
+        raw_item,
+        settings.W - (settings.LeftItemPadding + settings.RightItemPadding),
+      )
 
+      // Appling paddings
+      for i, value := range lines {
+        lines[i] = strings.Repeat(" ", settings.LeftItemPadding) + value + strings.Repeat(" ", settings.RightItemPadding)
+      }
+
+      blank_line := strings.Repeat(" ", settings.W)
+
+      var top_padding_lines []string
+      var bottom_padding_lines []string
+
+      for range make([]int, settings.TopItemPadding) {
+        top_padding_lines = append(top_padding_lines, blank_line)
+      }
+
+      for range make([]int, settings.BottomItemPadding) {
+        bottom_padding_lines = append(bottom_padding_lines, blank_line)
+      }
+
+      lines = append(top_padding_lines, lines...)
+      lines = append(lines, bottom_padding_lines...)
+      h += settings.TopItemPadding + settings.BottomItemPadding
+
+      // Saving
       item := Item {
         Rect {
           W: settings.W,
@@ -28,7 +54,7 @@ func OpenList(settings Settings, raw_items ...string) (selected int, err error) 
           X: 0,
           Y: content_h,
         },
-        val,
+        lines,
       }
 
       content_h += h

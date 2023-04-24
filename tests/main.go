@@ -35,6 +35,11 @@ func main() {
       ItemCl: "2",
       HoverItemCl: "1;37",
       Align: "",
+
+      LeftItemPadding: 1,
+      RightItemPadding: 1,
+      TopItemPadding: 1,
+      BottomItemPadding: 1,
     },
     items...
   )
